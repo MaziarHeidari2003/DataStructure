@@ -1,49 +1,54 @@
 import javax.swing.plaf.SeparatorUI;
+import java.net.Inet4Address;
 
 public class Main{
 
-    public static DoublyLinkedList createList(int from,int to){
-        DoublyLinkedList myList = new DoublyLinkedList<Integer>();
-
-        for(int i=from+1;i<to;i++){
-            myList.addFirst(i);
-
-            }
-        return myList;
-    }
-    public static void main(String args[]){
-
-        DoublyLinkedList myList1 = new DoublyLinkedList<Integer>();
-        myList1.addFirst(1);
-        myList1.addFirst(2);
-        myList1.addFirst(3);
-        myList1.addFirst(4);
-        myList1.addFirst(5);
-        myList1.addFirst(6);
-        for(int i=0; i< myList1.size();i++){
-            System.out.println(myList1.get(i));
-        }
-        System.out.println();
-        System.out.println("Lets delete some of the nodes");
-        System.out.println();
-
-        myList1.removeLast();
-        myList1.removeFirst();
-        for(int j=0; j< myList1.size();j++){
-            System.out.println(myList1.get(j));
-        }
-
-        System.out.println("Lets go for the second list!");
-        DoublyLinkedList myList =createList(2,15);
-        for(int k=0; k < myList.size();k++ ){
-            int current =myList.get(k);
-            for(int a=0; a< myList1.size();a++){
-                if(current==myList1.get(a)){
-                    myList.remove()
+    public static DoublyLinkedList<Integer> createList(int from,int to,DoublyLinkedList<Integer> firstList) {
+        DoublyLinkedList secondList = new DoublyLinkedList<Integer>();
+        for (int i = from + 1; i < to; i++) {
+            boolean isDuplicate = false;
+            for (int j = 0; j < firstList.size(); j++) {
+                if (i == firstList.get(j)) {
+                    isDuplicate = true;
+                    break;
                 }
             }
+            if (!isDuplicate) {
+                secondList.addFirst(i);
+            }
+        }
+        return secondList;
+
+    }
+
+
+    public static void main(String args[]){
+
+        DoublyLinkedList firstList = new DoublyLinkedList<Integer>();
+        firstList.addFirst(1);
+        firstList.addFirst(2);
+        firstList.addFirst(3);
+        firstList.addFirst(4);
+        firstList.addFirst(5);
+        firstList.addFirst(6);
+        for(int i=0; i< firstList.size();i++){
+            System.out.println(firstList.get(i));
+        }
+        System.out.println("Lets delete some of the nodes");
+
+        firstList.removeLast();
+        firstList.removeFirst();
+        for(int j=0; j< firstList.size();j++){
+            System.out.println(firstList.get(j));
         }
 
+        System.out.println("Creating second list excluding elements from the first list...");
+        DoublyLinkedList<Integer> secondList = createList(2, 15, firstList);
+
+        System.out.println("Second List:");
+        for (int k = 0; k < secondList.size(); k++) {
+            System.out.println(secondList.get(k));
+        }
 
 
 
