@@ -4,7 +4,7 @@ public class FunctionTiming {
 
     public static void main(String[] args) {
         // Define how many times to repeat the loop for each function
-        int repeat = 1000;
+        int repeat = 100000;
 
         // Measure the time for each function
         measureExecutionTime(repeat, "y = 5log(x)", (x) -> 5 * Math.log(x));

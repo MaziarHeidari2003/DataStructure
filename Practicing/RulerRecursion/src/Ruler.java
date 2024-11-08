@@ -19,7 +19,7 @@ public class Ruler {
 
     private static void drawLine(int tickLength,int tickLabel){
         for(int j=0;j<tickLength;j++){
-            System.out.printl("-");
+            System.out.print("-");
             if(tickLabel >=0){
                 System.out.print(" "+tickLabel);
                 System.out.print("\n");

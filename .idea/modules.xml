@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/DataStructure.iml" filepath="$PROJECT_DIR$/.idea/DataStructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DoubleLinkedList/DoubleLinkedList.iml" filepath="$PROJECT_DIR$/DoubleLinkedList/DoubleLinkedList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SimplyLinkedListHomework/SimplyLinkedListHomework.iml" filepath="$PROJECT_DIR$/SimplyLinkedListHomework/SimplyLinkedListHomework.iml" />
+    </modules>
+  </component>
+</project>
