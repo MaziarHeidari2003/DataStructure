@@ -1,5 +1,7 @@
 import net.datastructures.LinkedBinaryTree;
 import net.datastructures.Position;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Heapify<E> extends LinkedBinaryTree<E> {
     private int size;
@@ -43,28 +45,46 @@ public class Heapify<E> extends LinkedBinaryTree<E> {
     }
 
     public static void main(String[] args) {
-        LinkedBinaryTree<String> tree = new LinkedBinaryTree<>();
+        LinkedBinaryTree<Integer> tree = new LinkedBinaryTree<>();
 
         // Add a root node
-        Position<String> root = tree.addRoot("Root");
+        Position<Integer> root = tree.addRoot(10);
 
         // Add left and right children to the root
-        Position<String> leftChild = tree.addLeft(root, "Left Child");
-        Position<String> rightChild = tree.addRight(root, "Right Child");
+        Position<Integer> leftChild = tree.addLeft(root, 20);
+        Position<Integer> rightChild = tree.addRight(root, 30);
 
         // Add children to the left child
-        tree.addLeft(leftChild, "Left-Left Child");
-        tree.addRight(leftChild, "Left-Right Child");
+        tree.addLeft(leftChild, 40);
+        tree.addRight(leftChild, 50);
 
         // Add children to the right child
-        tree.addLeft(rightChild, "Right-Left Child");
-        tree.addRight(rightChild, "Right-Right Child");
+        tree.addLeft(rightChild, 60);
+        tree.addRight(rightChild, 70);
 
-        // Display tree information
-        System.out.println("Root: " + root.getElement());
-        System.out.println("Left child of root: " + leftChild.getElement());
-        System.out.println("Right child of root: " + rightChild.getElement());
-        System.out.println("Size of the tree: " + tree.size());
+        // Print tree in heap order (level-order traversal)
+        System.out.println("Heap Order of the Tree:");
+        printLevelOrder(tree, tree.root());
+    }
+
+    // Helper method to print the tree in level-order traversal
+    public static <E> void printLevelOrder(LinkedBinaryTree<E> tree, Position<E> root) {
+        if (root == null) return;
+
+        Queue<Position<E>> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Position<E> current = queue.poll();
+            System.out.print(current.getElement() + " ");
+
+            if (tree.left(current) != null) {
+                queue.add(tree.left(current));
+            }
+            if (tree.right(current) != null) {
+                queue.add(tree.right(current));
+            }
+        }
     }
 
 
